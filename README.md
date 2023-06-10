@@ -1,2 +1,2 @@
-# xampp
-Xampp local domain virtual hosts.
+# Xampp virtualhosts
+Xampp local domain virtual hosts (Laravel).
