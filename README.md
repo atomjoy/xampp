@@ -7,20 +7,23 @@ Xampp local domain example.org virtualhost with SSL for apache and Laravel.
 Open file as administrator **C:\Windows\System32\drivers\etc\hosts** and append hosts
 
 ```sh
-# Local domains
+# Local domains and localhost
 127.0.0.10 db.xx www.db.xx
 127.0.0.11 example.org www.example.org
-127.0.0.12 app.xxx www.app.xx
 ```
 
 ## Create directory for domain and index.php file
 
 ```sh
-# Domain dir
+# Domain dirs
+D:/www/localhost
+D:/www/db.xx/public
 D:/www/example.org/public
 
 # Apache index.php file with
 # <?php echo "works ...";
+D:/www/localhost/index.php
+D:/www/db.xx/public/index.php
 D:/www/example.org/public/index.php
 ```
 
