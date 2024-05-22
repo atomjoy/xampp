@@ -8,9 +8,9 @@ Open file as administrator **C:\Windows\System32\drivers\etc\hosts** and append 
 
 ```sh
 # Local domains
+127.0.0.10 db.xx www.db.xx
 127.0.0.11 example.org www.example.org
-127.0.0.12 app.xxx www.app.xxx
-127.0.0.13 db.xx www.db.xx
+127.0.0.12 app.xxx www.app.xx
 ```
 
 ## Create directory for domain and index.php file
