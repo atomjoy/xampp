@@ -83,11 +83,9 @@ Add in **xampp/apache/conf/extra/vhosts/example.org.conf**
 
 Restart Xampp Apache server from xampp panel or restart Windows.
 
-## Run in browser 
+## Run xampp server and website
 
-Accept invalid SSL for domain in (advanced).
+Accept invalid SSL for domain in (advanced button).
 
-```sh
-https://example.org
-``
+<https://example.org>
 
