@@ -1,0 +1,21 @@
+# php_value display_errors 1
+# DirectoryIndex index.html index.php
+
+# Dont list dirs
+Options -Indexes
+
+# Enable rewrite
+RewriteEngine On
+RewriteBase /
+
+# To non-www
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+# Http to https
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Https to http
+# RewriteCond %{HTTPS} on
+# RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
