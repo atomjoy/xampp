@@ -1,6 +1,6 @@
-# Use Custom Domain Instead of localhost in XAMPP
+# How to add a domain in Xampp with SSL on localhost
 
-Xampp local domain example.org virtualhost with SSL for apache and Laravel.
+Xampp virtual hosts for your domain or subdomain with SSL on Apache2 and Laravel.
 
 ## Windows add local host for example.org domain
 
@@ -91,4 +91,8 @@ Restart Xampp Apache server from xampp panel or restart Windows.
 Accept invalid SSL for domain in (advanced button).
 
 <https://example.org>
+
+## Testing
+
+Change example.org to a domain with dns mx records (for email testing in Laravel: app.xxx).
 
