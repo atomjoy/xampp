@@ -1,4 +1,4 @@
-# Local domains with SSL in Xampp
+# 🚀 Xampp local domains with SSL
 
 Xampp virtual hosts for your domain or subdomain with SSL on Apache2 and Laravel.
 
