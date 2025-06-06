@@ -1,30 +1,30 @@
-# How to add a domain in Xampp with SSL on localhost
+# Local domains with SSL in Xampp
 
 Xampp virtual hosts for your domain or subdomain with SSL on Apache2 and Laravel.
 
-## Windows add local host for example.org domain
+## Windows add local host for app.test domain
 
 Open file as administrator **C:\Windows\System32\drivers\etc\hosts** and append hosts
 
 ```sh
-# Local domains and localhost
-127.0.0.10 db.xx www.db.xx
-127.0.0.11 example.org www.example.org
+# Local domain
+127.0.0.10 app.test www.app.test
+
+# Next domain
+# 127.0.0.11 example.com www.example.com
 ```
 
 ## Create directory for domain and index.php file
 
 ```sh
 # Domain dirs
-D:/www/localhost
-D:/www/db.xx/public
-D:/www/example.org/public
+D:/web/localhost
+D:/web/app.test/public
 
 # Apache index.php file with
 # <?php echo "works ...";
-D:/www/localhost/index.php
-D:/www/db.xx/public/index.php
-D:/www/example.org/public/index.php
+D:/web/localhost/index.php
+D:/web/app.test/public/index.php
 ```
 
 ## Xampp Apache config 
@@ -37,24 +37,24 @@ Include "conf/extra/vhosts/*.conf"
 
 ## Xampp Apache Virtualhost
 
-Add in **xampp/apache/conf/extra/vhosts/example.org.conf**
+Add in **xampp/apache/conf/extra/vhosts/app.test.conf**
 
 ```sh
-<VirtualHost 127.0.0.11:80>
-    DocumentRoot "D:/www/example.org/public"
+<VirtualHost 127.0.0.10:80>
+    DocumentRoot "D:/web/app.test/public"
     DirectoryIndex index.php
-    ServerName example.org
-    ServerAlias www.example.org
+    ServerName app.test
+    ServerAlias www.app.test
 
-    ErrorLog "D:/www/example.org/storage/logs/example.org.error.log"
-    CustomLog "D:/www/example.org/storage/logs/example.org.access.log" common
+    ErrorLog "D:/web/app.test/storage/logs/app.test.error.log"
+    CustomLog "D:/web/app.test/storage/logs/app.test.access.log" common
 
     # Redirect to https
     #RewriteEngine On
     #RewriteCond %{HTTPS} off
     #RewriteRule (.*) https://%{SERVER_NAME}$1 [R,L]
 
-    <Directory "D:/www/example.org/public">
+    <Directory "D:/web/app.test/public">
         Options Indexes FollowSymLinks MultiViews
         AllowOverride all
         Order Deny,Allow
@@ -63,16 +63,16 @@ Add in **xampp/apache/conf/extra/vhosts/example.org.conf**
     </Directory>
 </VirtualHost>
 
-<VirtualHost 127.0.0.11:443>
-    DocumentRoot "D:/www/example.org/public"
-    ServerName example.org
-    ServerAlias www.example.org
+<VirtualHost 127.0.0.10:443>
+    DocumentRoot "D:/web/app.test/public"
+    ServerName app.test
+    ServerAlias www.app.test
 
     SSLEngine on
     SSLCertificateFile "conf/ssl.crt/server.crt"
     SSLCertificateKeyFile "conf/ssl.key/server.key"
 
-    <Directory "D:/www/example.org/public">
+    <Directory "D:/web/app.test/public">
         Options Indexes FollowSymLinks MultiViews
         AllowOverride all
         Order Deny,Allow
@@ -82,7 +82,7 @@ Add in **xampp/apache/conf/extra/vhosts/example.org.conf**
 </VirtualHost>
 ```
 
-## Restart Apache
+## Restart Apache and browser
 
 Restart Xampp Apache server from xampp panel or restart Windows.
 
@@ -90,9 +90,8 @@ Restart Xampp Apache server from xampp panel or restart Windows.
 
 Accept invalid SSL for domain in (advanced button).
 
-<https://example.org>
+<https://app.test>
 
 ## Testing
 
-Change example.org to a domain with dns mx records (for email testing in Laravel: app.xxx).
-
+Change app.test to a domain with dns mx records (for email testing in Laravel: app.test).
