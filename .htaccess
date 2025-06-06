@@ -1,14 +1,17 @@
 # php_value display_errors 1
 # DirectoryIndex index.html index.php
 
-# Dont list dirs
+# PHP 8.2 (small.pl)
+# AddType application/x-httpd-php82 .php
+
+# Dir listing disabled
 Options -Indexes
 
 # Enable rewrite
 RewriteEngine On
 RewriteBase /
 
-# To non-www
+# Non-www
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
@@ -19,3 +22,8 @@ RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 # Https to http
 # RewriteCond %{HTTPS} on
 # RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Redirect domain (permanent)
+# RewriteCond %{HTTP_HOST} ^example.com$ [OR]
+# RewriteCond %{HTTP_HOST} ^www.example.com$
+# RewriteRule (.*)$ https://atomjoy.github.io/$1 [R=301,L]
